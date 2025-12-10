@@ -59,6 +59,7 @@ public class Main {
 
     /**
      * Reads a positive integer from scanner.
+     * Helper is private because it is only used inside Main class.
      */
     private static int readPositiveInt(Scanner scanner) {
         int value;

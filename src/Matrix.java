@@ -11,10 +11,15 @@ import java.util.Random;
  */
 public class Matrix {
 
+    // Internal 2D array is private to preserve encapsulation
     private int[][] data;
     private int rows;
     private int cols;
 
+    /**
+     * Constructor that takes an existing 2D array.
+     * Public because we might want to wrap an already created matrix.
+     */
     public Matrix(int[][] data) {
         if (data == null || data.length == 0 || data[0].length == 0) {
             throw new IllegalArgumentException("Data array must be non-empty.");
@@ -32,6 +37,9 @@ public class Matrix {
     }
 
     /**
+     * Constructor that creates a random matrix with given dimensions and value range.
+     * Public – this is the main way to create random matrices from outside the class.
+     *
      * Time complexity of filling the matrix: O(rows * cols)
      * Space complexity: O(rows * cols)
      */
@@ -57,19 +65,23 @@ public class Matrix {
         }
     }
 
+    // Public getter for number of rows (read-only).
     public int getRows() {
         return rows;
     }
 
+    // Public getter for number of columns (read-only).
     public int getCols() {
         return cols;
     }
 
+    // Getter for a single element – public to allow reading particular values.
     public int getElement(int row, int col) {
         checkIndex(row, col);
         return data[row][col];
     }
 
+    // Getter for a single element – public to allow reading particular values.
     public void setElement(int row, int col, int value) {
         checkIndex(row, col);
         data[row][col] = value;
@@ -189,6 +201,7 @@ public class Matrix {
         return new Matrix(result);
     }
 
+    // Getter for a single element – public to allow reading particular values.
     private void checkIndex(int row, int col) {
         if (row < 0 || row >= rows || col < 0 || col >= cols) {
             throw new IndexOutOfBoundsException(
